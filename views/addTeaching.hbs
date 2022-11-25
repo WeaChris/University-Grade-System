@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2">
+
+            </div>
+            <div class="col-lg-8">
+
+                <form method="POST" action="/addTeaching" class="row g-3 needs-validation" novalidate>
+
+                    <div class="col-md-6">
+                        <label for="inputEmail4" class="form-label">ID</label>
+                        <input type="text" class="form-control" name="id" id="form">
+
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputPassword4" class="form-label">Όνομα Μαθήματος</label>
+                        <select class="form-select" id="form" name="lesson_name">
+                            {{#each lesson_names}}
+                            <option value="{{this}}">{{this}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div class="col-6">
+                        <label for="inputAddress" class="form-label">Χρόνος</label>
+                        <input type="text" class="form-control" name="year" id="form" placeholder="{{dictionary.year}}">
+                    </div>
+                    <div class="col-6">
+                        <label for="inputAddress2" class="form-label">Εξάμηνο</label>
+                        <select class="form-select" id="form" name="semester">
+                            
+                            <option value="1">Χειμερινό</option>
+                            <option value="2">Εαρινό</option>
+
+                        </select>
+                        <div class="invalid-feedback">
+                            Διαλεξε εξάμηνο.
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="inputPassword4" class="form-label">Όνομα Καθηγητή</label>
+                        <select class="form-select" id="form" name="teacher_name">
+                            {{#each teacher_surnames}}
+                            <option value="{{this}}">{{this}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="form-label">Πολλαπλασιαστής Θεωρίας</label>
+                        <select class="form-select" id="form" name="theory_multi">
+                            <option value="0">0</option>
+                            <option value="0.1">0.1</option>
+                            <option value="0.2">0.2</option>
+                            <option value="0.3">0.3</option>
+                            <option value="0.4">0.4</option>
+                            <option value="0.5">0.5</option>
+                            <option value="0.6">0.6</option>
+                            <option value="0.7">0.7</option>
+                            <option value="0.8">0.8</option>
+                            <option value="0.9">0.9</option>
+                            <option value="1">1</option>
+
+                        </select>
+                        <div class="invalid-feedback">
+                            Διαλεξε Πολλαπλασιαστή.
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Πολλαπλασιαστής Εργ.</label>
+                        <select class="form-select" id="form" name="lab_multi">
+                            <option value="0">0</option>
+                            <option value="0.1">0.1</option>
+                            <option value="0.2">0.2</option>
+                            <option value="0.3">0.3</option>
+                            <option value="0.4">0.4</option>
+                            <option value="0.5">0.5</option>
+                            <option value="0.6">0.6</option>
+                            <option value="0.7">0.7</option>
+                            <option value="0.8">0.8</option>
+                            <option value="0.9">0.9</option>
+                            <option value="1">1</option>
+
+                        </select>
+                        <div class="invalid-feedback">
+                            Διαλεξε Πολλαπλασιαστή.
+                        </div>
+
+                    </div>
+                    <div class="col-md-3">
+                        <label  class="form-label">Περιορισμός Θεωρίας</label>
+                        
+                        <select class="form-select" id="form" name="theory_restriction">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+
+
+                        </select>
+                        <div class="invalid-feedback">
+                            Διαλεξε Περιορισμο.
+                        </div>
+
+                    </div>
+                    <div class="col-md-3">
+                        <label  class="form-label">Περιορισμός Εργαστηρίου</label>
+
+                        <select class="form-select" id="form" name="lab_restriction">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Διαλεξε Περιορισμο.
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">Προσθηκη Διδασκαλίας</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

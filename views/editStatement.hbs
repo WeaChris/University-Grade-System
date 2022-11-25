@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Teahing</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2">
+
+            </div>
+            <div class="col-lg-8">
+
+                <form method="POST" action="/updateStatement" class="row g-3 needs-validation" novalidate>
+                    <div class="col-md-6">
+                        <label for="inputEmail4" class="form-label">ID</label>
+                        <input type="text" class="form-control" name="statement_id" value="{{dictionary.statement_id}}" id="form"
+                            aria-label="readonly input example" readonly>
+
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputEmail4" class="form-label">Ονομα Μαθηματος</label>
+                        <input type="text" class="form-control" name="lesson_name" value="{{dictionary.lesson_name}}" id="form"
+                            aria-label="readonly input example" readonly>
+
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputEmail4" class="form-label">Ονομα Μαθητη</label>
+                        <input type="text" class="form-control" name="student_name"
+                            value="{{dictionary.student_name}} {{dictionary.student_surname}}" id="form"
+                            aria-label="readonly input example" readonly>
+
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="form-label">Βαθμος Θεωρίας</label>
+
+                        <select class="form-select" id="form" name="theory_grade">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+
+
+                        </select>
+                        <div class="invalid-feedback">
+                            Βαλε Βαθμο.
+                        </div>
+
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Βαθμος Εργαστηρίου</label>
+
+                        <select class="form-select" id="form" name="lab_grade">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Βαλε Βαθμο.
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">Ενημέρωση Βαθμολογιας</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

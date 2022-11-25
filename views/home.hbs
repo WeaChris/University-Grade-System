@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICARUS</title>
+</head>
+
+<body>
+    <div class="container-fluid p-3 mb-2 bg-secondary text-white border border-secondary">
+
+        <div class="container">
+
+            <!-- FORM FOR LOGING IN-->
+            <p class="text-info">Καλώς ήρθες στο σύστημα icarus του πανεπιστημίου Αιγαίου.</p>
+            <p class="text-info">Αν είσαι εγγεγραμένος μπορείς να προχωρήσεις σε σύνδεση , αν όχι απευθύνσου στη
+                γραμματεία
+                του τμήματος για την εγγραφή σου.</p>
+        </div>
+
+        <div class="container">
+            <form method="POST" , action="/login">
+                <div class="form-group"><label class="small mb-1" for="inputUsername">Username</label><input
+                        class="form-control py-4" id="floatingInput" name="username" type="text"
+                        placeholder="Enter username address" /></div>
+                <div class="form-group"><label class="small mb-1" for="inputPassword">Password</label><input
+                        class="form-control py-4" id="floatingInput" name="password" type="password"
+                        placeholder="Enter password" /></div>
+                <div class="form-group">
+
+                {{#if req}}
+                    <div class="alert alert-danger" role="alert">
+                        {{req}}
+                    </div>
+                {{/if}}
+                <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0"><button
+                        class="btn btn-primary" type="sumbit">Log
+                        In</button></div>
+            </form>
+        </div>
+
+    </div>
+
+    </div>
+</body>
+
+</html>

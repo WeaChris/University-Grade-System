@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teachers Home</title>
+</head>
+
+<body>
+    <div class="row">
+        {{#each teacher}}
+        <div class="d-flex flex-column flex-shrink-0 p-3 tex-white bg-dark col-lg-2">
+            <a href="/teachersHome"
+                class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <svg class="bi me-2" width="40" height="32">
+                    <use><img src="images\Βλαχου.jpg" alt="" width="80" height="60"
+                            class="d-inline-block align-text-top rounded-circle">
+                    </use>
+                </svg>
+
+                <span class="fs-4" style="padding-left: 20px;">{{this.name}} {{this.surname}}</span>
+                {{/each}}
+
+            </a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+
+                <li class="nav-item" style="padding: 10px;">
+                    <a class="nav-link active" aria-current="page">
+
+                        <button class="btn btn-primary bg-primary" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#first" aria-expanded="false" aria-controls="collapseWidthExample">
+                            Διδασκαλίες Μαθημάτων
+                        </button>
+                    </a>
+                </li>
+
+                <li class="nav-item" style="padding: 10px;">
+                    <a class="nav-link active" aria-current="page">
+
+                        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#second"
+                            aria-expanded="false" aria-controls="collapseWidthExample">
+                            Προπτυχιακοί Μαθητές
+                        </button>
+                    </a>
+                </li>
+
+                <li class="nav-item" style="padding: 10px;">
+                    <a class="nav-link active" aria-current="page">
+
+                        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#third"
+                            aria-expanded="false" aria-controls="collapseWidthExample">
+                            Επεξεργασία Βαθμολογιών
+                        </button>
+                    </a>
+                </li>
+
+                <li class="nav-item" style="padding: 10px;">
+                    <a class="nav-link active" aria-current="page">
+                        <form method="POST" action="/logout">
+                            <button type="submit">Αποσύνδεση</button>
+                        </form>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+        <div class="container col-lg-10">
+            {{!-- FIRST COLLAPSE BUTTON --}}
+
+            <div class="collapse collapse-horizontal" id="first">
+                <div class="container">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Όνομα μαθήματος</th>
+                                <th scope="col">Χρόνος</th>
+                                <th scope="col">Εξάμηνο</th>
+                                <th scope="col">Πολλαπλασιαστής Θεωρίας</th>
+                                <th scope="col">Πολλαπλασιασμός Εργαστηρίου</th>
+                                <th scope="col">Περιορισμός Θεωρίας</th>
+                                <th scope="col">Περιορισμός Εργαστηρίου</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {{#each firstTable}}
+                            <tr>
+                                <th scope="row">{{this.id}}</th>
+                                <td>{{this.lessonName}}</th>
+                                <td>{{this.year}}</th>
+                                <td>{{this.semester}}</th>
+                                <td>{{this.theory_multi}}</th>
+                                <td>{{this.lab_multi}}</th>
+                                <td>{{this.theory_restriction}}</th>
+                                <td>{{this.lab_restriction}}</th>
+                                <td>
+                                    <form method="POST" action="/editTeaching">
+                                        <input class="btn btn-primary" type="submit" value="{{this.id}}"
+                                            name="id">Edit</input>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form method="POST" action="/deleteTeaching">
+                                        <input class="btn btn-danger" type="submit" value="{{this.id}}"
+                                            name="id"></input>
+                                    </form>
+                                </td>
+                            </tr>
+
+                            {{/each}}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {{!-- SECOND COLLAPSE BUTTON --}}
+
+            <div class="collapse collapse-horizontal" id="second">
+                <div class="container">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Όνομα Φοιτητή</th>
+                                <th scope="col">Επίθετο Φοιτητή</th>
+                                <th scope="col">Χρόνος Εγγραφης</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {{#each students}}
+                            <tr>
+                                <th scope="row">{{this.id}}</th>
+                                <td>{{this.name}}</th>
+                                <td>{{this.surname}}</th>
+                                <td>{{this.reg_year}}</th>
+
+                            </tr>
+
+                            {{/each}}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {{!-- THRID COLLAPSE BUTTON --}}
+
+            <div class="collapse collapse-horizontal" id="third">
+                <div class="container">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Ονομα Μαθήματος</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {{#each thirdTable}}
+                            <tr>
+                                <th>
+                                    {{this.lesson_name}}
+                                </th>
+                                <td>
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <th scope="col">Όνομα Φοιτητή</th>
+                                            <th scope="col">Βαθμος Θεωρίας</th>
+                                            <th scope="col">Βαθμος Εργαστηρίου</th>
+                                            <th scope="col">Τελικος Βαθμός</th>
+                                        </thead>
+
+                                        <tbody>
+                                            {{#each this.statements}}
+                                            <tr>
+                                                <td>{{this.student_name}} {{this.student_surname}}</th>
+                                                <td>{{this.theory_grade}}</th>
+                                                <td>{{this.lab_grade}}</th>
+                                                <td>{{this.final_grade}}</th>
+                                                <td>
+                                                    <form method="POST" action="/editStatement">
+                                                        <input class="btn btn-primary" type="submit" value="{{this.statement_id}}"
+                                                            name="id">Edit</input>
+                                                    </form>
+                                                </td>
+                                            </tr>
+
+                                            {{/each}}
+                                        </tbody>
+                                    </table>
+                                </td>
+
+                            </tr>
+                            {{/each}}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            {{!-- FOURTH COLLAPSE BUTTON --}}
+            <div class="collapse collapse-horizontal" id="fourth">
+                <div class="container">
+
+
+                </div>
+            </div>
+        </div>
+    
+</body>
+
+</html>

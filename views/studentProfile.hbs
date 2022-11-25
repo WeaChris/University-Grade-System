@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile</title>
+</head>
+
+<body class="text-align-center">
+    {{#each student}}
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-8">
+            <div class="card" style="width: 18rem;">
+                <img src="images\chris_pic.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{this.name}} {{this.surname}}</h5>
+                    <p class="card-text">Ο φοιτητής είναι εγγεγραμένος την χρονιά {{this.reg_year}}</p>
+                    <a href="studentsHome" class="btn btn-primary">Επιστροφή στην αρχική</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    {{/each}}
+
+
+</body>
+
+</html>

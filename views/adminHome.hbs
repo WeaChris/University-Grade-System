@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="row">
+        <div class="d-flex flex-column flex-shrink-0 p-3 tex-white bg-dark col-lg-2">
+            <a href="/adminHome"
+                class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <span class="fs-4" style="padding-left: 20px;">{{admin.name}} Επιπεδο διαχειρηστη {{admin.level}}</span>
+            </a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+
+                <li class="nav-item" style="padding: 10px;">
+                    <a class="nav-link active" aria-current="page">
+
+                        <button class="btn btn-primary bg-primary" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#first" aria-expanded="false" aria-controls="collapseWidthExample">
+                            Προσθήκη Μαθημάτων
+                        </button>
+                    </a>
+                </li>
+
+                <li class="nav-item" style="padding: 10px;">
+                    <a class="nav-link active" aria-current="page">
+
+                        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#second"
+                            aria-expanded="false" aria-controls="collapseWidthExample">
+                            Φοιτητές
+                        </button>
+                    </a>
+                </li>
+
+                <li class="nav-item" style="padding: 10px;">
+                    <a class="nav-link active" aria-current="page">
+
+                        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#third"
+                            aria-expanded="false" aria-controls="collapseWidthExample">
+                            Καθηγητές
+                        </button>
+                    </a>
+                </li>
+                <li class="nav-item" style="padding: 10px;">
+                    <a class="nav-link active" aria-current="page">
+
+                        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#fourth"
+                            aria-expanded="false" aria-controls="collapseWidthExample">
+                            Διδασκαλίες
+                        </button>
+                    </a>
+                </li>
+
+                <li class="nav-item" style="padding: 10px;">
+                    <a class="nav-link active" aria-current="page">
+                        <form method="POST" action="/logout">
+                            <button type="submit">Αποσύνδεση</button>
+                        </form>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+        <div class="container col-lg-10">
+            {{!-- FIRST COLLAPSE BUTTON --}}
+
+            <div class="collapse collapse-horizontal" id="first">
+                <div class="container">
+
+                    <form method="POST" action="/addLesson" class="row g-3 needs-validation" novalidate>
+
+                        <div class="col-md-6">
+                            <label for="inputEmail4" class="form-label">ID</label>
+                            <input type="text" class="form-control" name="id" id="form" placeholder="id">
+
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputPassword4" class="form-label">Όνομα Μαθήματος</label>
+                            <input type="text" class="form-control" name="name" id="form" placeholder="name">
+                        </div>
+                        <div class="col-6">
+                            <label for="inputAddress" class="form-label">Περιγραφη</label>
+                            <input type="text" class="form-control" name="description" id="form"
+                                placeholder="description">
+                        </div>
+
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary">Προσθήκη μαθήματος</button>
+                        </div>
+                    </form>
+
+
+                </div>
+            </div>
+            {{!-- SECOND COLLAPSE BUTTON --}}
+            <div class="collapse collapse-horizontal" id="second">
+                <div class="container">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Όνομα</th>
+                                <th scope="col">Επίθετο</th>
+                                <th scope="col">Χρονιά εγγραφής</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {{#each students}}
+                            <tr>
+                                <th scope="row">{{this.id}}</th>
+                                <td>{{this.name}}</th>
+                                <td>{{this.surname}}</th>
+                                <td>{{this.reg_year}}</th>
+                                <td>
+                                    <form method="POST" action="/deleteStudent">
+                                        <input class="btn btn-danger" type="submit" value="{{this.id}}"
+                                            name="id">Delete</input>
+                                    </form>
+                                </td>
+                            </tr>
+
+                            {{/each}}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {{!-- THIRD COLLAPSE BUTTON --}}
+            <div class="collapse collapse-horizontal" id="fourth">
+                <div class="container">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Όνομα Μαθηματος</th>
+                                <th scope="col">Χρονια</th>
+                                <th scope="col">Εξάμηνο</th>
+                                <th scope="col">Καθηγητής</th>
+                                <th scope="col">Πολλαπλασιαστής Θεωρίας</th>
+                                <th scope="col">Πολλαπλασιαστής Εργαστηρίου</th>
+                                <th scope="col">Περιορισμός Θεωρίας</th>
+                                <th scope="col">Περιορισμός Εργαστηρίου</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {{#each thirdTable}}
+                            <tr>
+                                <th scope="row">{{this.id}}</th>
+                                <td>{{this.lesson_name}}</th>
+                                <td>{{this.year}}</th>
+                                <td>{{this.semester}}</th>
+                                <td>{{this.teacher_name}}</th>
+                                <td>{{this.theory_multi}}</th>
+                                <td>{{this.lab_multi}}</th>
+                                <td>{{this.theory_restriction}}</th>
+                                <td>{{this.lab_restriction}}</th>
+                                <td>
+                                    <form method="POST" action="/deleteTeaching2">
+                                        <input class="btn btn-danger" type="submit" value="{{this.id}}"
+                                            name="id">Delete</input>
+                                    </form>
+                                </td>
+                            </tr>
+
+                            {{/each}}
+
+                        </tbody>
+                    </table>
+                    <form method="POST" action="/viewAddTeaching">
+                        <input class="btn btn-primary" type="submit" value="Προσθήκη Διδασκαλίας"></input>
+                    </form>
+                </div>
+            </div>
+            {{!--FOURTH COLLAPSE BUTTON --}}
+            <div class="collapse collapse-horizontal" id="third">
+                <div class="container">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Όνομα</th>
+                                <th scope="col">Επίθετο</th>
+                                <th scope="col">Βαθμός</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {{#each teachers}}
+                            <tr>
+                                <th scope="row">{{this.id}}</th>
+                                <td>{{this.name}}</th>
+                                <td>{{this.surname}}</th>
+                                <td>{{this.level}}</th>
+                                <td>
+                                    <form method="POST" action="/deleteTeacher">
+                                        <input class="btn btn-danger" type="submit" value="{{this.id}}"
+                                            name="id">Delete</input>
+                                    </form>
+                                </td>
+                            </tr>
+
+                            {{/each}}
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+</body>
+
+</html>
